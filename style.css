@@ -141,7 +141,7 @@ section ul {
     background-position: center;
     background-size: 100%;
   
-    height: 15em;
+    height: 25em;
   }
   
   #slider-frame [data-src] {
@@ -162,7 +162,35 @@ section ul {
     transition: 0s;
     background: #ccc;
   }
+ 
+  @media screen and (max-width: 750px) {
+
+    nav {
+      display: flex;
+      flex-flow: column;
+    }
+    nav a {
+      display: none;
+    }
+    nav::before {
+      content: 'SHOW MENU';
+      color: #fff;
+      background: #000;
+      font-weight: bold;
+      padding: 0.5em 2em;
+    }
+    nav.open::before {
+      content: 'HIDE MENU';
+    }
+    nav.open a {
+      display: block;
+    }
   
+    nav ::selection {
+      color: inherit;
+      background: transparent;
+    }
+  }
 
 
 
