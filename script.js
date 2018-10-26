@@ -5,6 +5,8 @@ setUpPage();
 function setUpPage(){
     addSliderEventListeners();
     NavMenuToggle();
+    productDescriptionButton();
+    OpenCloseResetsWhenResized()
 }
 
 
@@ -27,7 +29,39 @@ function setUpPage(){
     document.body.addEventListener('click', bodyClickHandler);
   }
 
-  //carousel
+  //Show More button on products when page is gets smaller
+  function productDescriptionButton(){
+    const articles = document.querySelectorAll('#products article')
+    for (let article of articles ){
+      let button = article.querySelector('button');
+
+      button.addEventListener('click', function(){
+        article.classList.toggle('expanded');
+        button.innerHTML = article.classList.contains('expanded') ?
+        'Hide Details' : 'Show Details';
+      });
+    }
+}
+// Resizing the window resets open/closed product details
+  // Resizing the window resets nav visibility
+  function OpenCloseResetsWhenResized() {
+
+    const windowResizeHandler = function() {
+
+      const nav = document.querySelector('nav');
+      nav.classList.remove('open');
+
+      const articles = document.querySelectorAll('#products article');
+      
+      for (let article of articles) {
+        article.classList.remove('expanded');
+      }
+    };
+
+    window.addEventListener('resize', windowResizeHandler); 
+  }
+
+  //CAROUSEL
 function addSliderEventListeners() {
 
     const sliderPrev = document.getElementById('slider-prev');

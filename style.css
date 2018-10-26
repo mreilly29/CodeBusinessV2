@@ -89,6 +89,41 @@ section ul {
     width: 100%;
     border: 1px solid #333;
 }
+#products button {
+  display: none;
+}
+
+@media screen and (max-width: 40em) {
+  #products {
+    grid-template-columns: 1fr;
+    grid-row-gap: 1em;
+    
+    width: 60vw;
+    min-width: 22em;
+    margin: 1em auto;
+  }
+
+  #products button {
+    display: inline-block;
+  }  
+  
+  #products article p {
+    display: none;
+  }
+
+  #products article.expanded p {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 25em) {
+  #products {
+    width: auto;
+    min-width: unset;
+  }
+}
+
+
 
 
 #slider ::selection {
